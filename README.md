@@ -231,13 +231,13 @@ tests/             323 tests: unitarios e integración contra Postgres real
 
 | Documento | Para qué |
 |---|---|
-| [`PRD`](draga-inn/docs/PRD_Sistema_Gestion_Gobernanza_Draga_Inn.md) | Qué construimos y por qué |
-| [`Especificación funcional v1`](draga-inn/specs/ESPEC_FUNCIONAL_v1_Draga_Inn.md) | Comportamiento: pantallas, reglas RN-01 a RN-52, permisos, casos borde |
-| [`Hand-off técnico`](draga-inn/docs/HANDOFF_TECNICO_Draga_Inn.md) | Arquitectura y modelo de datos |
-| [`Decisiones de diseño`](draga-inn/docs/DECISIONES_DE_DISENO.md) | Qué se decidió al construirlo, y por qué esa opción |
-| [`Despliegue`](draga-inn/docs/DESPLIEGUE.md) | De un proyecto vacío a producción |
-| [`Manual completo (PDF)`](draga-inn/docs/manual/) | Todo el detalle, para leer o imprimir |
-| [`Alcance diferido v2`](draga-inn/specs/ESPEC_v2_Draga_Inn.md) | Lo que **no** va en el v1 |
+| [`PRD`](docs/PRD_Sistema_Gestion_Gobernanza_Draga_Inn.md) | Qué construimos y por qué |
+| [`Especificación funcional v1`](ESPEC_FUNCIONAL_v1_Draga_Inn.md) | Comportamiento: pantallas, reglas RN-01 a RN-52, permisos, casos borde |
+| [`Hand-off técnico`](docs/HANDOFF_TECNICO_Draga_Inn.md) | Arquitectura y modelo de datos |
+| [`Decisiones de diseño`](docs/DECISIONES_DE_DISENO.md) | Qué se decidió al construirlo, y por qué esa opción |
+| [`Despliegue`](docs/DESPLIEGUE.md) | De un proyecto vacío a producción |
+| [`Manual completo (PDF)`](docs/manual/) | Todo el detalle, para leer o imprimir |
+| [`Alcance diferido v2`](ESPEC_v2_Draga_Inn.md) | Lo que **no** va en el v1 |
 
 ---
 
@@ -269,7 +269,7 @@ tests/             323 tests: unitarios e integración contra Postgres real
   bloquea la apertura del portal a propietarios
 
 El detalle de cada decisión y de lo que quedó abierto está en
-[Decisiones de diseño](draga-inn/docs/DECISIONES_DE_DISENO.md).
+[Decisiones de diseño](docs/DECISIONES_DE_DISENO.md).
 
 ---
 
