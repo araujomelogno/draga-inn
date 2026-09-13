@@ -1,0 +1,3 @@
+# Sólo para generar el manual en PDF (pnpm docs:manual).
+# La aplicación no depende de Python.
+reportlab>=4.0
