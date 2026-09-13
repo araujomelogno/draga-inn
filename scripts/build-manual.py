@@ -295,7 +295,7 @@ def _indice():
 if __name__ == "__main__":
     salida = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-        "draga-inn", "docs", "manual", "Manual_Draga_Inn_v1.pdf",
+        "docs", "manual", "Manual_Draga_Inn_v1.pdf",
     )
     os.makedirs(os.path.dirname(salida), exist_ok=True)
     doc = construir(salida)
