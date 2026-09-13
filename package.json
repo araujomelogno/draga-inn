@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Sistema de Gestión y Gobernanza — Edificio Draga Inn",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "next dev",
@@ -18,7 +20,7 @@
     "db:migrate": "tsx src/db/migrate.ts",
     "db:seed": "tsx src/db/seed.ts",
     "job": "tsx src/jobs/run.ts",
-    "docs:manual": "tsx scripts/build-manual.ts"
+    "docs:manual": "python3 scripts/build-manual.py"
   },
   "dependencies": {
     "@google-cloud/storage": "^7.14.0",
