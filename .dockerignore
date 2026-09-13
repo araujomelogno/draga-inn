@@ -1,0 +1,12 @@
+node_modules
+.next
+.git
+.github
+tests
+playwright-report
+test-results
+coverage
+draga-inn/docs/manual
+*.log
+.env
+.env.local

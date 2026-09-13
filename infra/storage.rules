@@ -1,0 +1,15 @@
+rules_version = '2';
+
+// El bucket de documentos NO es público y NO se accede desde el cliente con el
+// SDK de Firebase. Todo acceso pasa por el servidor, que verifica permisos y
+// emite una signed URL v4 de vida corta.
+//
+// Estas reglas son la red de seguridad: niegan todo por defecto, de modo que
+// una credencial de cliente filtrada no alcance para leer ni escribir nada.
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

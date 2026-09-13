@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: draga
+          POSTGRES_PASSWORD: draga
+          POSTGRES_DB: draga
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgres://draga:draga@127.0.0.1:5432/draga
+      TZ: America/Montevideo
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with: { version: 10.33.0 }
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      # Las migraciones tienen que aplicar desde una base vacía, siempre.
+      - name: Migraciones desde cero
+        run: pnpm db:migrate
+
+      - name: Seed
+        run: pnpm db:seed
+
+      - name: Tests (unitarios + integración)
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_FIREBASE_PROJECT_ID: draga-inn
+
+      # Ni una cadena en inglés visible al usuario (CLAUDE.md)
+      - name: Textos en español
+        run: |
+          if grep -rnE '>(Save|Cancel|Delete|Submit|Loading|Error|Search|Close|Edit|Add|Back|Next|Yes|No)<' app/ src/ 2>/dev/null; then
+            echo "::error::Hay texto en inglés visible al usuario."
+            exit 1
+          fi
+          echo "✔ Sin cadenas en inglés en la interfaz."
