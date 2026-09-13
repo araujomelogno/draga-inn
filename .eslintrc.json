@@ -1,0 +1,28 @@
+{
+  "root": true,
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "ignorePatterns": [".next/", "node_modules/", "src/db/migrations/", "public/sw.js"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }]
+  },
+  "overrides": [
+    {
+      "files": ["src/modules/**/*.ts", "app/**/*.ts", "app/**/*.tsx"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "paths": [
+              {
+                "name": "@/db/client",
+                "importNames": ["getPool", "getDb"],
+                "message": "No importes el pool ni el cliente de Drizzle acá. Toda escritura pasa por withTx() (src/db/tx.ts)."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
